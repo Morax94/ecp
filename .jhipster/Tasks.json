@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "tasks"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nameOfTask",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "startTime",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "endTime",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "20171115174629",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "tasks",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll"
+}

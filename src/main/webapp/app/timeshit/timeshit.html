@@ -1,0 +1,38 @@
+<div ng-cloak>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <div class="form-group col-md-12">
+                    <label for="taskName">Task Name</label>
+                    <input type="text" class="form-control" id="taskName" ng-model="vm.task.name" placeholder="Name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="taskStartTime">Start Time</label>
+                    <select class="form-control" id="taskStartTime" ng-model="vm.task.startTime" ng-options="idx as hour for (idx, hour) in vm.hours"
+                    />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="taskEndTime">End Time</label>
+                    <select class="form-control" id="taskEndTime" ng-model="vm.task.endTime" ng-options="idx as hour for (idx, hour) in vm.hours"
+                    />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-primary" ng-model="vm.saveTask()">Submit</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+                <div style="display:inline-block;">
+                    <div uib-datepicker ng-model="vm.task.date" class="well well-sm" datepicker-options="options"></div>
+                </div>
+        </div>
+        <div class="col-md-4">
+            <label for="taskStartTime">Summary</label>
+            <textarea class="form-control" rows="3" ng-disabled="true" ng-model="vm.summary(vm.task)" style="resize: none;"></textarea>
+        </div>
+    </div>
+</div>
