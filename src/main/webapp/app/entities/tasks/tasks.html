@@ -30,8 +30,8 @@
                 <tr ng-repeat="tasks in vm.tasks track by tasks.id">
                     <td><a ui-sref="tasks-detail({id:tasks.id})">{{tasks.id}}</a></td>
                     <td>{{tasks.nameOfTask}}</td>
-                        <td>{{tasks.startTime | date:'mediumDate'}}</td>
-                        <td>{{tasks.endTime | date:'mediumDate'}}</td>
+                    <td>{{tasks.startTime | date:'medium'}}</td>
+                    <td>{{tasks.endTime | date:'medium'}}</td>
                     <td>
                         {{tasks.userLogin}}
                     </td>

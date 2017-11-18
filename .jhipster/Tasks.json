@@ -17,11 +17,11 @@
         },
         {
             "fieldName": "startTime",
-            "fieldType": "LocalDate"
+            "fieldType": "ZonedDateTime"
         },
         {
             "fieldName": "endTime",
-            "fieldType": "LocalDate"
+            "fieldType": "ZonedDateTime"
         }
     ],
     "changelogDate": "20171115174629",
