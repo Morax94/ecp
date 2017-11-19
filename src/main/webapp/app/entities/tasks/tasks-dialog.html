@@ -22,7 +22,7 @@
         <div class="form-group">
             <label class="control-label" for="field_startTime">Start Time</label>
                 <div class="input-group">
-                    <input id="field_startTime" type="text" class="form-control" name="startTime" uib-datepicker-popup="{{dateformat}}" ng-model="vm.tasks.startTime" is-open="vm.datePickerOpenStatus.startTime"
+                    <input id="field_startTime" type="text" class="form-control" name="startTime" datetime-picker="{{dateformat}}" ng-model="vm.tasks.startTime" is-open="vm.datePickerOpenStatus.startTime"
                     />
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="vm.openCalendar('startTime')"><i class="glyphicon glyphicon-calendar"></i></button>
@@ -32,7 +32,7 @@
         <div class="form-group">
             <label class="control-label" for="field_endTime">End Time</label>
                 <div class="input-group">
-                    <input id="field_endTime" type="text" class="form-control" name="endTime" uib-datepicker-popup="{{dateformat}}" ng-model="vm.tasks.endTime" is-open="vm.datePickerOpenStatus.endTime"
+                    <input id="field_endTime" type="text" class="form-control" name="endTime" datetime-picker="{{dateformat}}" ng-model="vm.tasks.endTime" is-open="vm.datePickerOpenStatus.endTime"
                     />
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="vm.openCalendar('endTime')"><i class="glyphicon glyphicon-calendar"></i></button>

@@ -24,10 +24,13 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import java.time.LocalDate;
+import java.time.Instant;
+import java.time.ZonedDateTime;
+import java.time.ZoneOffset;
 import java.time.ZoneId;
 import java.util.List;
 
+import static moe.dyedmagenta.ecp.web.rest.TestUtil.sameInstant;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -45,11 +48,11 @@ public class TasksResourceIntTest {
     private static final String DEFAULT_NAME_OF_TASK = "AAAAAAAAAA";
     private static final String UPDATED_NAME_OF_TASK = "BBBBBBBBBB";
 
-    private static final LocalDate DEFAULT_START_TIME = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_START_TIME = LocalDate.now(ZoneId.systemDefault());
+    private static final ZonedDateTime DEFAULT_START_TIME = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_START_TIME = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
-    private static final LocalDate DEFAULT_END_TIME = LocalDate.ofEpochDay(0L);
-    private static final LocalDate UPDATED_END_TIME = LocalDate.now(ZoneId.systemDefault());
+    private static final ZonedDateTime DEFAULT_END_TIME = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_END_TIME = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
     @Autowired
     private TasksRepository tasksRepository;
@@ -158,8 +161,8 @@ public class TasksResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(tasks.getId().intValue())))
             .andExpect(jsonPath("$.[*].nameOfTask").value(hasItem(DEFAULT_NAME_OF_TASK.toString())))
-            .andExpect(jsonPath("$.[*].startTime").value(hasItem(DEFAULT_START_TIME.toString())))
-            .andExpect(jsonPath("$.[*].endTime").value(hasItem(DEFAULT_END_TIME.toString())));
+            .andExpect(jsonPath("$.[*].startTime").value(hasItem(sameInstant(DEFAULT_START_TIME))))
+            .andExpect(jsonPath("$.[*].endTime").value(hasItem(sameInstant(DEFAULT_END_TIME))));
     }
 
     @Test
@@ -174,8 +177,8 @@ public class TasksResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(tasks.getId().intValue()))
             .andExpect(jsonPath("$.nameOfTask").value(DEFAULT_NAME_OF_TASK.toString()))
-            .andExpect(jsonPath("$.startTime").value(DEFAULT_START_TIME.toString()))
-            .andExpect(jsonPath("$.endTime").value(DEFAULT_END_TIME.toString()));
+            .andExpect(jsonPath("$.startTime").value(sameInstant(DEFAULT_START_TIME)))
+            .andExpect(jsonPath("$.endTime").value(sameInstant(DEFAULT_END_TIME)));
     }
 
     @Test

@@ -3,7 +3,7 @@ package moe.dyedmagenta.ecp.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
 /**
@@ -24,10 +24,10 @@ public class Tasks implements Serializable {
     private String nameOfTask;
 
     @Column(name = "start_time")
-    private LocalDate startTime;
+    private ZonedDateTime startTime;
 
     @Column(name = "end_time")
-    private LocalDate endTime;
+    private ZonedDateTime endTime;
 
     @ManyToOne
     private User user;
@@ -54,29 +54,29 @@ public class Tasks implements Serializable {
         this.nameOfTask = nameOfTask;
     }
 
-    public LocalDate getStartTime() {
+    public ZonedDateTime getStartTime() {
         return startTime;
     }
 
-    public Tasks startTime(LocalDate startTime) {
+    public Tasks startTime(ZonedDateTime startTime) {
         this.startTime = startTime;
         return this;
     }
 
-    public void setStartTime(LocalDate startTime) {
+    public void setStartTime(ZonedDateTime startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDate getEndTime() {
+    public ZonedDateTime getEndTime() {
         return endTime;
     }
 
-    public Tasks endTime(LocalDate endTime) {
+    public Tasks endTime(ZonedDateTime endTime) {
         this.endTime = endTime;
         return this;
     }
 
-    public void setEndTime(LocalDate endTime) {
+    public void setEndTime(ZonedDateTime endTime) {
         this.endTime = endTime;
     }
 

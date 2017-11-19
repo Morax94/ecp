@@ -1,7 +1,7 @@
 package moe.dyedmagenta.ecp.service.dto;
 
 
-import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,9 +16,9 @@ public class TasksDTO implements Serializable {
 
     private String nameOfTask;
 
-    private LocalDate startTime;
+    private ZonedDateTime startTime;
 
-    private LocalDate endTime;
+    private ZonedDateTime endTime;
 
     private Long userId;
 
@@ -40,19 +40,19 @@ public class TasksDTO implements Serializable {
         this.nameOfTask = nameOfTask;
     }
 
-    public LocalDate getStartTime() {
+    public ZonedDateTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDate startTime) {
+    public void setStartTime(ZonedDateTime startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDate getEndTime() {
+    public ZonedDateTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalDate endTime) {
+    public void setEndTime(ZonedDateTime endTime) {
         this.endTime = endTime;
     }
 
