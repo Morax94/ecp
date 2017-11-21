@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="tasks.new" >
+                <button ng-if="vm.userId == 'admin'" class="btn btn-primary" ui-sref="tasks.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span >
                         Create new Tasks
@@ -27,12 +27,12 @@
                 </tr>
             </thead>
             <tbody infinite-scroll="vm.loadPage(vm.page + 1)" infinite-scroll-disabled="vm.page >= vm.links['last']">
-                <tr ng-repeat="tasks in vm.tasks track by tasks.id">
+                <tr ng-repeat="tasks in vm.tasks track by tasks.id" ng-if ="tasks.userLogin == vm.userId">
                     <td><a ui-sref="tasks-detail({id:tasks.id})">{{tasks.id}}</a></td>
                     <td>{{tasks.nameOfTask}}</td>
                     <td>{{tasks.startTime | date:'medium'}}</td>
                     <td>{{tasks.endTime | date:'medium'}}</td>
-                    <td>
+                    <td ng-if ="tasks.userLogin == vm.userId" >
                         {{tasks.userLogin}}
                     </td>
                     <td class="text-right">

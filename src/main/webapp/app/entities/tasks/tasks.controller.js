@@ -5,12 +5,15 @@
         .module('ewidencjaCzasuPracyApp')
         .controller('TasksController', TasksController);
 
-    TasksController.$inject = ['Tasks', 'ParseLinks', 'AlertService', 'paginationConstants'];
+    TasksController.$inject = ['Tasks', 'ParseLinks', 'AlertService', 'paginationConstants','Principal'];
 
-    function TasksController(Tasks, ParseLinks, AlertService, paginationConstants) {
+    function TasksController(Tasks, ParseLinks, AlertService, paginationConstants, Principal) {
 
         var vm = this;
 
+        Principal.identity().then(function (account) {
+            vm.userId = account.login;
+        });
         vm.tasks = [];
         vm.loadPage = loadPage;
         vm.itemsPerPage = paginationConstants.itemsPerPage;
